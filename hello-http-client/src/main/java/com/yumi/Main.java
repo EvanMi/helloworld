@@ -1,10 +1,10 @@
 package com.yumi;
 
-import com.yumi.connection.ConnectionRequest;
-import com.yumi.connection.HttpClientConnection;
-import com.yumi.connection.HttpClientConnectionManager;
-import com.yumi.connection.ManagedHttpClientConnection;
-import com.yumi.connection.PoolingHttpClientConnectionManager;
+import com.yumi.http.client.connection.ConnectionRequest;
+import com.yumi.http.client.connection.HttpClientConnection;
+import com.yumi.http.client.connection.HttpClientConnectionManager;
+import com.yumi.http.client.connection.ManagedHttpClientConnection;
+import com.yumi.http.client.connection.PoolingHttpClientConnectionManager;
 
 import java.util.concurrent.TimeUnit;
 
@@ -17,7 +17,7 @@ public class Main {
         final String state = "state";
         try {
 
-            for (int i = 0; i < 100; i++) {
+            for (int i = 0; i < 3; i++) {
                 ConnectionRequest connRequest = connManager.requestConnection("localhost:8080", state);
 
                 HttpClientConnection managedConn = connRequest.get(2000, TimeUnit.MILLISECONDS);

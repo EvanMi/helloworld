@@ -12,5 +12,6 @@
     <packaging>pom</packaging>
     <modules>
         <module>hello-http-client</module>
+        <module>hello-rpc-server-client</module>
     </modules>
 </project>
