@@ -13,5 +13,6 @@
     <modules>
         <module>hello-http-client</module>
         <module>hello-rpc-server-client</module>
+        <module>hello-message-store</module>
     </modules>
 </project>
