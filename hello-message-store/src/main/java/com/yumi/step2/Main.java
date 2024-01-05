@@ -1,6 +1,6 @@
-package com.yumi.step1;
+package com.yumi.step2;
 
-import com.yumi.step1.config.FlushDiskType;
+import com.yumi.step2.config.FlushDiskType;
 
 public class Main {
     public static void main(String[] args) throws Exception{
