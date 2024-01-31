@@ -45,11 +45,9 @@ public abstract class ServiceThread implements Runnable {
             if (interrupt) {
                 this.thread.interrupt();
             }
-            long beginTime = System.currentTimeMillis();
             if (!this.thread.isDaemon()) {
                 this.thread.join(this.getJointime());
             }
-            long elapsedTime = System.currentTimeMillis() - beginTime;
         } catch (InterruptedException e) {
             //igonre
         }

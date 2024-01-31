@@ -17,5 +17,17 @@ public class ByteTest {
         System.out.println(allocate.getInt());
         System.out.println(allocate.getInt());
 
+        ByteBuffer allocate1 = ByteBuffer.allocate(64);
+        allocate1.putInt(1);
+        allocate1.putInt(2);
+        allocate1.putInt(3);
+        allocate1.putInt(4);
+        allocate1.putInt(5);
+        allocate1.flip();
+
+        byte[] arr = new byte[20];
+        allocate1.get(arr, 0, 4);
+        allocate1.get(arr, 0, 4);
+
     }
 }

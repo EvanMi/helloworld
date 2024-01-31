@@ -1,6 +1,5 @@
 package com.yumi.utils.bloom;
 
-import com.google.common.hash.HashCode;
 import com.google.common.hash.Hashing;
 
 import java.nio.charset.Charset;
@@ -28,8 +27,8 @@ public class BloomFilter {
         this.n = n;
         double errorRate = f / 100.0;
 
-        // set p =（1 - 1/m)^kn ~ e^(-kn/m)
-        // errorRate = (1 - p)^k
+        // set p =（1 - 1/m)^kn ~ e^(-kn/m) 错误标记为1的概率 （正确标记为1的概率为1/m）
+        // errorRate = (1 - p)^k   k个位置全都被错误标记为1
         // when p = 0.5, k = (m/n) * ln2, errorRate = (1/2)^k
         // m >= n*log2(1/errorRate)*log2(e)
         this.k = (int) Math.ceil(logMN(0.5, errorRate));

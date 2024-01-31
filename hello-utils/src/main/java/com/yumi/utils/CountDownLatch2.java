@@ -60,10 +60,10 @@ public class CountDownLatch2 {
         protected boolean tryReleaseShared(int arg) {
             for(;;) {
                 int c = this.getState();
-                if (c == 0) {
+                if (c == 0 || c < arg) {
                     return false;
                 }
-                int nextC = c - 1;
+                int nextC = c - arg;
                 if (compareAndSetState(c, nextC)) {
                     return nextC == 0;
                 }
@@ -71,6 +71,15 @@ public class CountDownLatch2 {
         }
 
         void reset() {
+            if (getState() == 0) {
+                this.setState(this.startCount);
+            }
+            for(;;) {
+                boolean released = this.releaseShared(this.getState());
+                if (released || getState() == 0) {
+                    break;
+                }
+            }
             this.setState(this.startCount);
         }
     }

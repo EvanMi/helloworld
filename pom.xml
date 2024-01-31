@@ -15,5 +15,6 @@
         <module>hello-rpc-server-client</module>
         <module>hello-message-store</module>
         <module>hello-utils</module>
+        <module>zero-copy</module>
     </modules>
 </project>
