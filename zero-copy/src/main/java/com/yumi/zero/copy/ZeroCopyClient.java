@@ -11,6 +11,8 @@ import java.nio.channels.WritableByteChannel;
 
 public class ZeroCopyClient {
 
+    //org.apache.rocketmq.broker.pagecache.ManyMessageTransfer
+
     public void sendFile(WritableByteChannel target) throws Exception {
         String path = this.getClass().getClassLoader().getResource("").getPath();
         System.out.println(path);
