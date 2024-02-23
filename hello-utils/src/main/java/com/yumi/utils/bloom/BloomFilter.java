@@ -7,10 +7,15 @@ import java.nio.charset.StandardCharsets;
 
 public class BloomFilter {
     public static final Charset UTF_8 = StandardCharsets.UTF_8;
+    /*用户指定数据*/
+    //错误率
     private int f = 10;
+    //预估存放数据量
     private int n = 128;
-
+    /*计算数据*/
+    //hash函数个数
     private int k;
+    //布隆过滤器bit位数
     private int m;
 
     public static BloomFilter createByFn(int f, int n) {
@@ -33,6 +38,7 @@ public class BloomFilter {
         // m >= n*log2(1/errorRate)*log2(e)
         this.k = (int) Math.ceil(logMN(0.5, errorRate));
         this.m = (int) Math.ceil(this.n * logMN(2, 1 / errorRate) * logMN(2, Math.E));
+        //转换为8的整数倍（java中只有byte）
         this.m = (int) (Byte.SIZE * Math.ceil(this.m / (Byte.SIZE * 1.0)));
     }
 
@@ -53,7 +59,7 @@ public class BloomFilter {
         return bitPositions;
     }
 
-    public void hashTo(String str, BitsArray bits) {
+    public void hashTo(String str, BitsArray bits /*bit数为m的数组*/) {
         hashTo(calcBitPositions(str), bits);
     }
 

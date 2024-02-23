@@ -25,8 +25,8 @@ public class BitsArray implements Cloneable {
         if (bitLength % Byte.SIZE > 0) {
             temp++;
         }
-        bytes = new byte[temp];
-        Arrays.fill(bytes, (byte) 0x00);
+        this.bytes = new byte[temp];
+        Arrays.fill(this.bytes, (byte) 0x00);
     }
 
     private BitsArray(byte[] bytes, int bitLength) {
